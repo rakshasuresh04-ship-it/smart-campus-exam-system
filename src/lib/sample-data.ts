@@ -1,63 +1,98 @@
-export const sampleData = {
-  stats: {
-    students: 1268,
-    faculty: 124,
-    subjects: 96,
-    exams: 42,
-  },
-  trendData: [
-    { month: 'Jan', exams: 12 },
-    { month: 'Feb', exams: 18 },
-    { month: 'Mar', exams: 16 },
-    { month: 'Apr', exams: 20 },
-    { month: 'May', exams: 24 },
-    { month: 'Jun', exams: 30 },
-  ],
-  recentActivities: [
-    { id: 'a1', title: 'Midterm timetable published', time: '12 minutes ago' },
-    { id: 'a2', title: 'Hall allocation changed for CSE-204', time: '1 hour ago' },
-    { id: 'a3', title: 'Faculty assignment synced', time: '3 hours ago' },
-    { id: 'a4', title: 'Result publication approval pending', time: 'Today' },
-  ],
-  students: [
-    { id: 's1', name: 'Meera Nair', studentId: 'STU-2048', email: 'meera@campus.edu', department: 'Computer Science', course: 'B.Tech', semester: 'Semester 6', year: 2024, status: 'active' },
-    { id: 's2', name: 'Karan Verma', studentId: 'STU-2049', email: 'karan@campus.edu', department: 'Electronics', course: 'B.Tech', semester: 'Semester 6', year: 2024, status: 'active' },
-    { id: 's3', name: 'Aisha Khan', studentId: 'STU-2050', email: 'aisha@campus.edu', department: 'Computer Science', course: 'M.Tech', semester: 'Semester 2', year: 2023, status: 'inactive' },
-    { id: 's4', name: 'Rohit Das', studentId: 'STU-2051', email: 'rohit@campus.edu', department: 'Mechanical', course: 'B.E.', semester: 'Semester 8', year: 2022, status: 'active' },
-  ],
-  faculty: [
-    { id: 'f1', name: 'Dr. Nisha Rao', facultyId: 'FAC-1001', email: 'nisha@campus.edu', department: 'Computer Science', designation: 'Professor', status: 'active', assignedSubjects: 'Operating Systems, DBMS' },
-    { id: 'f2', name: 'Prof. Sandeep Kumar', facultyId: 'FAC-1002', email: 'sandeep@campus.edu', department: 'Electronics', designation: 'Associate Professor', status: 'active', assignedSubjects: 'Signals, DSP' },
-    { id: 'f3', name: 'Dr. Salma Ali', facultyId: 'FAC-1003', email: 'salma@campus.edu', department: 'Business', designation: 'Assistant Professor', status: 'inactive', assignedSubjects: 'Economics, Research' },
-  ],
-  exams: [
-    { id: 'e1', name: 'Mid Semester Exam', type: 'Midterm', department: 'Computer Science', semester: 'Semester 6', subject: 'DBMS', date: '2026-11-12', startTime: '09:00', endTime: '10:30', duration: 90, status: 'published' },
-    { id: 'e2', name: 'End Semester Exam', type: 'Endterm', department: 'Electronics', semester: 'Semester 6', subject: 'Signals', date: '2026-11-14', startTime: '11:00', endTime: '12:30', duration: 90, status: 'draft' },
-    { id: 'e3', name: 'Practical Lab', type: 'Practical', department: 'Computer Science', semester: 'Semester 5', subject: 'Operating Systems', date: '2026-11-17', startTime: '14:00', endTime: '16:00', duration: 120, status: 'completed' },
-  ],
-  timetable: [
-    { id: 't1', date: '2026-11-12', course: 'B.Tech CSE', subject: 'DBMS', hall: 'Block A - Room 204', time: '09:00 - 10:30', conflict: false },
-    { id: 't2', date: '2026-11-12', course: 'B.Tech ECE', subject: 'Signals', hall: 'Block C - Room 120', time: '09:00 - 10:30', conflict: true },
-    { id: 't3', date: '2026-11-14', course: 'B.Tech CSE', subject: 'Operating Systems', hall: 'Block B - Lab 1', time: '11:00 - 12:30', conflict: false },
-  ],
-  halls: [
-    { id: 'h1', name: 'Main Hall 1', building: 'Academic Block A', capacity: 120, available: true },
-    { id: 'h2', name: 'Room 204', building: 'Academic Block B', capacity: 70, available: true },
-    { id: 'h3', name: 'Lab 1', building: 'Innovation Hub', capacity: 40, available: false },
-  ],
-  seatAllocations: [
-    { id: 'sa1', student: 'Meera Nair', hall: 'Main Hall 1', seat: 'A-12', status: 'Allocated' },
-    { id: 'sa2', student: 'Karan Verma', hall: 'Main Hall 1', seat: 'A-13', status: 'Allocated' },
-    { id: 'sa3', student: 'Rohit Das', hall: 'Room 204', seat: 'B-09', status: 'Manual override' },
-  ],
-  results: [
-    { id: 'r1', examName: 'DBMS Midterm', student: 'Meera Nair', marks: 84, maxMarks: 100, grade: 'A', status: 'pass' },
-    { id: 'r2', examName: 'Signals Midterm', student: 'Karan Verma', marks: 63, maxMarks: 100, grade: 'B', status: 'pass' },
-    { id: 'r3', examName: 'Operating Systems Lab', student: 'Aisha Khan', marks: 48, maxMarks: 100, grade: 'C', status: 'fail' },
-  ],
-  notifications: [
-    { id: 'n1', title: 'Timetable publication', message: 'Your exam timetable has been published for Semester 6.', time: '2 min ago', unread: true },
-    { id: 'n2', title: 'Hall ticket is ready', message: 'Hall tickets are now available for download.', time: '1 hour ago', unread: false },
-    { id: 'n3', title: 'Seating allocation updated', message: 'Your seating plan has been revised for DBMS.', time: 'Today', unread: false },
-  ],
-};
+import { BarChart3, Download, Eye } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { sampleData } from '../lib/sample-data';
+
+export function Results() {
+  const [status, setStatus] = useState('all');
+
+  const visibleResults = useMemo(() => {
+    return status === 'all' ? sampleData.results : sampleData.results.filter(item => item.status === status);
+  }, [status]);
+
+  return (
+    <div>
+      <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="text-xs uppercase tracking-[0.2em] text-sky-600">Academic Records</p>
+          <h1 className="mt-2 text-3xl font-bold text-slate-900">Results</h1>
+        </div>
+        <button className="inline-flex items-center gap-2 rounded-xl bg-sky-600 px-4 py-2.5 text-sm font-semibold text-white">
+          <Download className="h-4 w-4" />
+          Publish Results
+        </button>
+      </div>
+
+      <div className="mb-6 grid gap-4 md:grid-cols-3">
+        <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <p className="text-sm text-slate-500">Passed</p>
+          <p className="mt-2 text-2xl font-bold text-slate-900">{sampleData.results.filter(item => item.status === 'pass').length}</p>
+        </div>
+        <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <p className="text-sm text-slate-500">Failed</p>
+          <p className="mt-2 text-2xl font-bold text-slate-900">{sampleData.results.filter(item => item.status === 'fail').length}</p>
+        </div>
+        <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <p className="text-sm text-slate-500">Published</p>
+          <p className="mt-2 text-2xl font-bold text-slate-900">2</p>
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <h3 className="text-lg font-semibold text-slate-900">Performance Summary</h3>
+          <div className="flex items-center gap-3">
+            <select
+              value={status}
+              onChange={event => setStatus(event.target.value)}
+              className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700 outline-none"
+            >
+              <option value="all">All results</option>
+              <option value="pass">Passed</option>
+              <option value="fail">Failed</option>
+            </select>
+            <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm text-slate-600">
+              <BarChart3 className="h-4 w-4" />
+              Analytics
+            </button>
+          </div>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-left text-sm">
+            <thead className="text-slate-500">
+              <tr className="border-b border-slate-200">
+                <th className="py-3 font-medium">Exam</th>
+                <th className="py-3 font-medium">Student</th>
+                <th className="py-3 font-medium">Marks</th>
+                <th className="py-3 font-medium">Grade</th>
+                <th className="py-3 font-medium">Status</th>
+                <th className="py-3 font-medium">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {visibleResults.map(result => (
+                <tr key={result.id} className="border-b border-slate-100 last:border-0">
+                  <td className="py-3 text-slate-700">{result.examName}</td>
+                  <td className="py-3 text-slate-700">{result.student}</td>
+                  <td className="py-3 text-slate-700">{result.marks}/{result.maxMarks}</td>
+                  <td className="py-3 text-slate-700">{result.grade}</td>
+                  <td className="py-3">
+                    <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-medium ${result.status === 'pass' ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>
+                      {result.status}
+                    </span>
+                  </td>
+                  <td className="py-3">
+                    <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-2.5 py-1.5 text-xs text-slate-600">
+                      <Eye className="h-3.5 w-3.5" />
+                      View
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,36 +1,89 @@
-import { Info, ShieldCheck } from 'lucide-react';
-
-export function Settings() {
-  return (
-    <div>
-      <div className="mb-6">
-        <p className="text-xs uppercase tracking-[0.2em] text-sky-600">Configuration</p>
-        <h1 className="mt-2 text-3xl font-bold text-slate-900">System Settings</h1>
-      </div>
-
-      <div className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div className="flex items-center gap-3">
-            <div className="rounded-xl bg-sky-100 p-2 text-sky-700"><ShieldCheck className="h-5 w-5" /></div>
-            <h3 className="text-lg font-semibold text-slate-900">Security Controls</h3>
-          </div>
-          <ul className="mt-5 space-y-3 text-sm text-slate-600">
-            <li>• Role-based access and row-level security enabled</li>
-            <li>• Audit logs recorded for admin modifications</li>
-            <li>• Auth tokens managed by Supabase</li>
-          </ul>
-        </div>
-
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div className="flex items-center gap-3">
-            <div className="rounded-xl bg-emerald-100 p-2 text-emerald-700"><Info className="h-5 w-5" /></div>
-            <h3 className="text-lg font-semibold text-slate-900">Environment Status</h3>
-          </div>
-          <p className="mt-5 text-sm text-slate-600">
-            Configure your Supabase project in the <code>.env.local</code> file to activate live auth and data operations.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
+export const sampleData = {
+  stats: {
+    students: 1268,
+    faculty: 124,
+    subjects: 96,
+    exams: 42,
+  },
+  trendData: [
+    { month: 'Jan', exams: 12 },
+    { month: 'Feb', exams: 18 },
+    { month: 'Mar', exams: 16 },
+    { month: 'Apr', exams: 20 },
+    { month: 'May', exams: 24 },
+    { month: 'Jun', exams: 30 },
+  ],
+  recentActivities: [
+    { id: 'a1', title: 'Midterm timetable published', time: '12 minutes ago' },
+    { id: 'a2', title: 'Hall allocation changed for CSE-204', time: '1 hour ago' },
+    { id: 'a3', title: 'Faculty assignment synced', time: '3 hours ago' },
+    { id: 'a4', title: 'Result publication approval pending', time: 'Today' },
+  ],
+  students: [
+    { id: 's1', name: 'Meera Nair', studentId: 'STU-2048', email: 'meera@campus.edu', department: 'Computer Science', course: 'B.Tech', semester: 'Semester 6', year: 2024, status: 'active' },
+    { id: 's2', name: 'Karan Verma', studentId: 'STU-2049', email: 'karan@campus.edu', department: 'Electronics', course: 'B.Tech', semester: 'Semester 6', year: 2024, status: 'active' },
+    { id: 's3', name: 'Aisha Khan', studentId: 'STU-2050', email: 'aisha@campus.edu', department: 'Computer Science', course: 'M.Tech', semester: 'Semester 2', year: 2023, status: 'inactive' },
+    { id: 's4', name: 'Rohit Das', studentId: 'STU-2051', email: 'rohit@campus.edu', department: 'Mechanical', course: 'B.E.', semester: 'Semester 8', year: 2022, status: 'active' },
+  ],
+  faculty: [
+    { id: 'f1', name: 'Dr. Nisha Rao', facultyId: 'FAC-1001', email: 'nisha@campus.edu', department: 'Computer Science', designation: 'Professor', status: 'active', assignedSubjects: 'Operating Systems, DBMS' },
+    { id: 'f2', name: 'Prof. Sandeep Kumar', facultyId: 'FAC-1002', email: 'sandeep@campus.edu', department: 'Electronics', designation: 'Associate Professor', status: 'active', assignedSubjects: 'Signals, DSP' },
+    { id: 'f3', name: 'Dr. Salma Ali', facultyId: 'FAC-1003', email: 'salma@campus.edu', department: 'Business', designation: 'Assistant Professor', status: 'inactive', assignedSubjects: 'Economics, Research' },
+  ],
+  academic: {
+    departments: [
+      { id: 'd1', name: 'Computer Science', code: 'CSE', hod: 'Dr. A. Nair' },
+      { id: 'd2', name: 'Electronics', code: 'ECE', hod: 'Dr. R. Singh' },
+      { id: 'd3', name: 'Mechanical', code: 'MEC', hod: 'Prof. T. Srivastava' },
+    ],
+    courses: [
+      { id: 'c1', name: 'B.Tech Computer Science', duration: 4 },
+      { id: 'c2', name: 'M.Tech Computer Science', duration: 2 },
+      { id: 'c3', name: 'B.E. Mechanical', duration: 4 },
+    ],
+    subjects: [
+      { id: 'sub1', name: 'Database Management Systems', code: 'CSE201', credits: 4, department: 'Computer Science' },
+      { id: 'sub2', name: 'Operating Systems', code: 'CSE203', credits: 4, department: 'Computer Science' },
+      { id: 'sub3', name: 'Digital Signal Processing', code: 'ECE310', credits: 3, department: 'Electronics' },
+      { id: 'sub4', name: 'Thermodynamics', code: 'MEC201', credits: 4, department: 'Mechanical' },
+    ],
+    semesters: [
+      { id: 'sem1', name: 'Semester 1', number: 1 },
+      { id: 'sem2', name: 'Semester 2', number: 2 },
+      { id: 'sem3', name: 'Semester 3', number: 3 },
+      { id: 'sem4', name: 'Semester 4', number: 4 },
+      { id: 'sem5', name: 'Semester 5', number: 5 },
+      { id: 'sem6', name: 'Semester 6', number: 6 },
+    ],
+  },
+  exams: [
+    { id: 'e1', name: 'Mid Semester Exam', type: 'Midterm', department: 'Computer Science', semester: 'Semester 6', subject: 'DBMS', date: '2026-11-12', startTime: '09:00', endTime: '10:30', duration: 90, status: 'published' },
+    { id: 'e2', name: 'End Semester Exam', type: 'Endterm', department: 'Electronics', semester: 'Semester 6', subject: 'Signals', date: '2026-11-14', startTime: '11:00', endTime: '12:30', duration: 90, status: 'draft' },
+    { id: 'e3', name: 'Practical Lab', type: 'Practical', department: 'Computer Science', semester: 'Semester 5', subject: 'Operating Systems', date: '2026-11-17', startTime: '14:00', endTime: '16:00', duration: 120, status: 'completed' },
+  ],
+  timetable: [
+    { id: 't1', date: '2026-11-12', course: 'B.Tech CSE', subject: 'DBMS', hall: 'Block A - Room 204', time: '09:00 - 10:30', conflict: false },
+    { id: 't2', date: '2026-11-12', course: 'B.Tech ECE', subject: 'Signals', hall: 'Block C - Room 120', time: '09:00 - 10:30', conflict: true },
+    { id: 't3', date: '2026-11-14', course: 'B.Tech CSE', subject: 'Operating Systems', hall: 'Block B - Lab 1', time: '11:00 - 12:30', conflict: false },
+  ],
+  halls: [
+    { id: 'h1', name: 'Main Hall 1', building: 'Academic Block A', capacity: 120, available: true },
+    { id: 'h2', name: 'Room 204', building: 'Academic Block B', capacity: 70, available: true },
+    { id: 'h3', name: 'Lab 1', building: 'Innovation Hub', capacity: 40, available: false },
+  ],
+  seatAllocations: [
+    { id: 'sa1', student: 'Meera Nair', hall: 'Main Hall 1', seat: 'A-12', status: 'Allocated' },
+    { id: 'sa2', student: 'Karan Verma', hall: 'Main Hall 1', seat: 'A-13', status: 'Allocated' },
+    { id: 'sa3', student: 'Rohit Das', hall: 'Room 204', seat: 'B-09', status: 'Manual override' },
+  ],
+  results: [
+    { id: 'r1', examName: 'DBMS Midterm', student: 'Meera Nair', marks: 84, maxMarks: 100, grade: 'A', status: 'pass' },
+    { id: 'r2', examName: 'Signals Midterm', student: 'Karan Verma', marks: 63, maxMarks: 100, grade: 'B', status: 'pass' },
+    { id: 'r3', examName: 'Operating Systems Lab', student: 'Aisha Khan', marks: 48, maxMarks: 100, grade: 'C', status: 'fail' },
+  ],
+  notifications: [
+    { id: 'n1', title: 'Timetable publication', message: 'Your exam timetable has been published for Semester 6.', time: '2 min ago', unread: true },
+    { id: 'n2', title: 'Hall ticket is ready', message: 'Hall tickets are now available for download.', time: '1 hour ago', unread: false },
+    { id: 'n3', title: 'Seating allocation updated', message: 'Your seating plan has been revised for DBMS.', time: 'Today', unread: false },
+  ],
+};
